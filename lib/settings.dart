@@ -19,25 +19,44 @@ class Settings extends StatelessWidget {
             Row(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  child: GestureDetector(
-                    onTap: feedback,
-                    child: RichText(
-                      text: TextSpan(
-                          text: 'Kontakntí email:',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'WHO, CDC, ECDC, NHC, DXY',
-                              style: TextStyle(
-                                color: Colors.red,
-                              ),
-                            ),
-                          ]),
+                  margin: EdgeInsets.only(bottom: 20, top: 20),
+                  child: const Text(
+                    'O nás',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: const Text(
+                    'Verze: 1.0.0+3',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: const Text(
+                    'Kontakt: pocitadlo.znamek@krcek.cz',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.left,
                   ),
                 ),
               ],
@@ -48,3 +67,4 @@ class Settings extends StatelessWidget {
     );
   }
 }
+//Contact email: matej.dev@krcek.cz

@@ -20,7 +20,10 @@ class _NewTransactionState extends State<NewTransaction> {
     final enteredMark = int.parse(_markController.text);
     final enteredWeight = int.parse(_weightController.text);
 
-    if (enteredMark == 0 || enteredWeight == 0 || (enteredWeight > 5) || enteredMark > 10) {
+    if (enteredMark == 0 ||
+        enteredWeight == 0 ||
+        (enteredWeight > 5) ||
+        enteredMark > 10) {
       return;
     }
 
@@ -31,12 +34,14 @@ class _NewTransactionState extends State<NewTransaction> {
     Navigator.of(context).pop();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
       child: Container(
+        height: (MediaQuery.of(context).size.height +
+                MediaQuery.of(context).viewInsets.bottom) *
+            0.5,
         padding: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
