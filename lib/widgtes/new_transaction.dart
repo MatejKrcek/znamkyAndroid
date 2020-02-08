@@ -21,13 +21,13 @@ class _NewTransactionState extends State<NewTransaction> {
     final enteredWeight = int.parse(_weightController.text);
 
     if (enteredMark == 0 || enteredWeight == 0 || (enteredWeight > 5) || enteredMark > 10) {
+      return;
     }
 
     widget.addTx(
       enteredMark,
       enteredWeight,
     );
-
     Navigator.of(context).pop();
   }
 

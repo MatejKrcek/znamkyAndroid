@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './widgtes/new_transaction.dart';
 import './widgtes/transaction_list.dart';
 import './models/transaction.dart';
+import './settings.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,20 +17,26 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           accentColor: Colors.red,
           // errorColor: Colors.red,
-          textTheme: ThemeData.light().textTheme.copyWith(
-                title: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-                button: TextStyle(color: Colors.white),
-              ),
+          textTheme: ThemeData
+              .light()
+              .textTheme
+              .copyWith(
+            title: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+            button: TextStyle(color: Colors.white),
+          ),
           appBarTheme: AppBarTheme(
-            textTheme: ThemeData.light().textTheme.copyWith(
-                  title: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+            textTheme: ThemeData
+                .light()
+                .textTheme
+                .copyWith(
+              title: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           )),
       home: MyHomePage(),
     );
@@ -113,6 +120,10 @@ class _MyHomePageState extends State<MyHomePage> {
     prumer = citatel / jmenovatel; //pokud je 1 znamka, delka je 2
   }
 
+  void execute() {
+    removeMark();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,14 +133,22 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => _startAddNewTransaction(context),
-            tooltip: 'Přidat novou známku',
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settings()),
+              );
+            },
+            tooltip: 'Nastavení',
           ),
           IconButton(
             icon: Icon(Icons.delete),
-            color: Theme.of(context).errorColor,
-            onPressed: removeMark,
+            color: Colors.redAccent,
+            onPressed: () {
+              execute();
+//              Displaysnackbar();
+            },
             tooltip: 'Odstranit poslední známku',
           ),
         ],
@@ -140,12 +159,25 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Text(
-                'Aktuální průměr: ${prumer.toStringAsFixed(2)}',
-                style: TextStyle(
-                  fontSize: 20,
+              Container(
+                margin: EdgeInsets.only(bottom: 20),
+                child: Text(
+                  'Aktuální průměr: ${prumer.toStringAsFixed(2)}',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
+              ),
+              Container(
+                height: 5,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.red,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.red,
+                ),
               ),
               TransactionList(_userTransactions, _deleteTransaction),
             ],
