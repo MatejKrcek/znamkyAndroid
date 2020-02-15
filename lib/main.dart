@@ -169,16 +169,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Container(
-                height: 5,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.red,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.red,
-                ),
-              ),
+//              Container(
+//                height: 5,
+//                decoration: BoxDecoration(
+//                  border: Border.all(
+//                    color: Colors.red,
+//                  ),
+//                  borderRadius: BorderRadius.circular(20),
+//                  color: Colors.red,
+//                ),
+//              ),
               TransactionList(_userTransactions, _deleteTransaction),
             ],
           ),

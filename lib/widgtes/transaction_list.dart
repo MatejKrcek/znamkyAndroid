@@ -11,7 +11,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.6,
+      height: MediaQuery.of(context).size.height * 0.8,
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
@@ -33,93 +33,88 @@ class TransactionList extends StatelessWidget {
                     )),
               ],
             )
-          : ListView.builder(
-              itemBuilder: (ctx, index) {
-                return Card(
-                  elevation: 5,
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 5,
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.all(6),
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              margin: const EdgeInsets.only(left: 13, bottom: 5),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.blue,
+          : Container(
+//              decoration: BoxDecoration(
+//                border: Border.all(
+//                  color: Colors.red,
+//                  width: 2,
+//                ),
+//                borderRadius: BorderRadius.circular(5),
+//              ),
+              child: ListView.builder(
+                itemBuilder: (ctx, index) {
+                  return Card(
+                    elevation: 5,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 5,
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.all(6),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(left: 13, bottom: 5),
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.blue,
+                                  child: Text(
+                                    transactions[index].weight.toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 21,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(left: 35, bottom: 5),
                                 child: Text(
-                                  transactions[index].weight.toString(),
+                                  transactions[index].mark.toString(),
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 21,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 35, bottom: 5),
-                              child: Text(
-                                transactions[index].mark.toString(),
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 21,
-                                  fontWeight: FontWeight.bold,
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.only(left: 10),
+                                child: const Text(
+                                  'Známka',
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 13,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Container(
-                              margin: EdgeInsets.only(left: 10),
-                              child: const Text(
-                                'Známka',
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 13,
+                              Container(
+                                margin: const EdgeInsets.only(left: 20),
+                                child: const Text(
+                                  'Váha',
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 13,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 20),
-                              child: const Text(
-                                'Váha',
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-//                  child: ListTile(
-//                    leading: CircleAvatar(
-//                      radius: 20,
-//                      child: Padding(
-//                        padding: EdgeInsets.all(6),
-//                        child: FittedBox(
-//                          child: Text('${transactions[index].weight}'),
-//                        ),
-//                      ),
-//                    ),
-//                    title: Text(
-//                      transactions[index].mark.toString(),
-//                      style: Theme.of(context).textTheme.title,
-//                    ),
-//
-//                  ),
-                );
-              },
-              itemCount: transactions.length,
+                  );
+                },
+                itemCount: transactions.length,
+              ),
             ),
     );
   }
