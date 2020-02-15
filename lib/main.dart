@@ -70,9 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
     double jmenovatel = 0;
 
     setState(() {
-      _userTransactions.add(newTx);
-      markList.add(txWeight);
-      weightList.add(txMark);
+      _userTransactions.insert(0, newTx);
+      markList.insert(0, txWeight);
+      weightList.insert(0, txMark);
     });
 
     for (int i = 0; i < markList.length; i++) {
@@ -107,10 +107,12 @@ class _MyHomePageState extends State<MyHomePage> {
     double jmenovatel = 0;
 
     setState(() {
-      _userTransactions.removeLast();
-      markList.removeLast();
-      weightList.removeLast();
+      _userTransactions.removeAt(0);
+      markList.removeAt(0);
+      weightList.removeAt(0);
     });
+
+    print('znamky: $markList');
 
     for (int i = 0; i < markList.length; i++) {
       citatel = citatel + (markList[i].toDouble() * weightList[i].toDouble());
