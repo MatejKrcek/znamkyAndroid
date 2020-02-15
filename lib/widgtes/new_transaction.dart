@@ -22,8 +22,9 @@ class _NewTransactionState extends State<NewTransaction> {
 
     if (enteredMark == 0 ||
         enteredWeight == 0 ||
-        (enteredWeight > 5) ||
-        enteredMark > 10) {
+        enteredWeight > 5 ||
+        enteredMark > 10 ||
+        enteredWeight < 0) {
       return;
     }
 
@@ -36,39 +37,47 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
+    return SingleChildScrollView(
       child: Container(
-        height: (MediaQuery.of(context).size.height +
-                MediaQuery.of(context).viewInsets.bottom) *
-            0.5,
-        padding: EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'Známka'),
-              controller: _weightController,
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) => _submitData(),
-              // onChanged: (val) {
-              //   titleInput = val;
-              // },
+        color: Colors.lightBlueAccent,
+        child: Card(
+          color: Colors.white,
+          elevation: 5,
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10,
             ),
-            TextField(
-              decoration: InputDecoration(labelText: 'Váha'),
-              controller: _markController,
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) => _submitData(),
-              // onChanged: (val) => amountInput = val,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                TextField(
+                  decoration: InputDecoration(labelText: 'Známka'),
+                  controller: _weightController,
+                  keyboardType: TextInputType.number,
+                  onSubmitted: (_) => _submitData(),
+                  // onChanged: (val) {
+                  //   titleInput = val;
+                  // },
+                ),
+                TextField(
+                  decoration: InputDecoration(labelText: 'Váha'),
+                  controller: _markController,
+                  keyboardType: TextInputType.number,
+                  onSubmitted: (_) => _submitData(),
+                  // onChanged: (val) => amountInput = val,
+                ),
+                RaisedButton(
+                  child: Text('Přidat známku'),
+                  color: Theme.of(context).primaryColor,
+                  textColor: Theme.of(context).textTheme.button.color,
+                  onPressed: _submitData,
+                ),
+              ],
             ),
-            RaisedButton(
-              child: Text('Přidat známku'),
-              color: Theme.of(context).primaryColor,
-              textColor: Theme.of(context).textTheme.button.color,
-              onPressed: _submitData,
-            ),
-          ],
+          ),
         ),
       ),
     );

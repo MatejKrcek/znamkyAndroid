@@ -17,26 +17,20 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           accentColor: Colors.red,
           // errorColor: Colors.red,
-          textTheme: ThemeData
-              .light()
-              .textTheme
-              .copyWith(
-            title: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-            button: TextStyle(color: Colors.white),
-          ),
-          appBarTheme: AppBarTheme(
-            textTheme: ThemeData
-                .light()
-                .textTheme
-                .copyWith(
-              title: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+                button: TextStyle(color: Colors.white),
               ),
-            ),
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  title: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
           )),
       home: MyHomePage(),
     );
@@ -70,6 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
     double jmenovatel = 0;
 
     setState(() {
+//      position.forEach((element) {
+//        if (position.contains(element) ) {
+//
+//        }
+//      });
       _userTransactions.insert(0, newTx);
       markList.insert(0, txWeight);
       weightList.insert(0, txMark);
@@ -81,6 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     position.add(markList.length); //pokud neni zadna znamka, delka je 1
     prumer = citatel / jmenovatel; //pokud je 1 znamka, delka je 2
+
+    print('pozice: $position');
   }
 
   void _startAddNewTransaction(BuildContext ctx) {
@@ -100,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _userTransactions.removeWhere((tx) => tx.id == id);
     });
+//    print('smazano');
   }
 
   void removeMark() {
@@ -108,17 +110,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
     setState(() {
       _userTransactions.removeAt(0);
+//      _userTransactions.removeWhere((tx) => tx.id == id);
       markList.removeAt(0);
       weightList.removeAt(0);
+      position.removeAt(0);
     });
 
-    print('znamky: $markList');
+//    print('znamky: $markList');
+//    print('pozice: $position');
 
     for (int i = 0; i < markList.length; i++) {
       citatel = citatel + (markList[i].toDouble() * weightList[i].toDouble());
       jmenovatel = jmenovatel + weightList[i].toDouble();
     }
-    position.add(markList.length); //pokud neni zadna znamka, delka je 1
+//    position.add(markList.length); //pokud neni zadna znamka, delka je 1
+//    position.removeAt(0); //pokud neni zadna znamka, delka je 1
+
     prumer = citatel / jmenovatel; //pokud je 1 znamka, delka je 2
   }
 
@@ -128,60 +135,78 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Počítadlo známek',
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Settings()),
-              );
-            },
-            tooltip: 'Nastavení',
-          ),
-          IconButton(
-            icon: Icon(Icons.delete),
-            color: Colors.redAccent,
-            onPressed: () {
-              execute();
-//              Displaysnackbar();
-            },
-            tooltip: 'Odstranit poslední známku',
-          ),
-        ],
+    final appBar = AppBar(
+      title: const Text(
+        'Počítadlo známek',
       ),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Settings()),
+            );
+          },
+          tooltip: 'Nastavení',
+        ),
+        IconButton(
+          icon: Icon(Icons.delete),
+          color: Colors.redAccent,
+          onPressed: () {
+            execute();
+//              Displaysnackbar();
+          },
+          tooltip: 'Odstranit poslední známku',
+        ),
+      ],
+    );
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(20),
+          margin: EdgeInsets.only(top: 0, bottom: 0, left: 5, right: 5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(bottom: 20),
-                child: Text(
-                  'Aktuální průměr: ${prumer.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontSize: 20,
+                height: (MediaQuery.of(context).size.height -
+                    appBar.preferredSize.height -
+                    MediaQuery.of(context).padding.top) *
+                    0.15,
+                margin: EdgeInsets.only(bottom: 0),
+                child: Center(
+                  child: Text(
+                    'Aktuální průměr: ${prumer.toStringAsFixed(2)}',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
+                ),
+              ),
+              Container(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      0.75,
+                  child: TransactionList(_userTransactions, removeMark)),
+              Container(
+                height: (MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.1,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  'Place for your ad',
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
-//              Container(
-//                height: 5,
-//                decoration: BoxDecoration(
-//                  border: Border.all(
-//                    color: Colors.red,
-//                  ),
-//                  borderRadius: BorderRadius.circular(20),
-//                  color: Colors.red,
-//                ),
-//              ),
-              TransactionList(_userTransactions, _deleteTransaction),
             ],
           ),
         ),

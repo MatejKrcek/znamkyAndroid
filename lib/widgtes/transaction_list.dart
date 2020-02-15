@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
-  final Function deleteTx;
+  final Function removeMark;
 
-  TransactionList(this.transactions, this.deleteTx);
+  TransactionList(this.transactions, this.removeMark);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.8,
+//      height: MediaQuery.of(context).size.height * 0.6,
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
@@ -34,20 +33,13 @@ class TransactionList extends StatelessWidget {
               ],
             )
           : Container(
-//              decoration: BoxDecoration(
-//                border: Border.all(
-//                  color: Colors.red,
-//                  width: 2,
-//                ),
-//                borderRadius: BorderRadius.circular(5),
-//              ),
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
                   return Card(
                     elevation: 5,
                     margin: const EdgeInsets.symmetric(
                       vertical: 8,
-                      horizontal: 5,
+                      horizontal: 1,
                     ),
                     child: Container(
                       padding: EdgeInsets.all(6),
@@ -56,7 +48,7 @@ class TransactionList extends StatelessWidget {
                           Row(
                             children: <Widget>[
                               Container(
-                                margin:
+                                  margin:
                                     const EdgeInsets.only(left: 13, bottom: 5),
                                 child: CircleAvatar(
                                   backgroundColor: Colors.blue,
@@ -82,6 +74,12 @@ class TransactionList extends StatelessWidget {
                                   ),
                                 ),
                               ),
+//                              IconButton(
+//                                icon: Icon(Icons.delete),
+//                                color: Colors.redAccent,
+//                                onPressed: () => removeMark(),
+//                                tooltip: 'Odstranit poslední známku',
+//                              ),
                             ],
                           ),
                           Row(
