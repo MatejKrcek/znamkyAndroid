@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
     position.add(markList.length); //pokud neni zadna znamka, delka je 1
     prumer = citatel / jmenovatel; //pokud je 1 znamka, delka je 2
 
-    print('pozice: $position');
+//    print('pozice: $position');
   }
 
   void _startAddNewTransaction(BuildContext ctx) {

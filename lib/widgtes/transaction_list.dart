@@ -33,6 +33,11 @@ class TransactionList extends StatelessWidget {
               ],
             )
           : Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(color: Colors.grey, width: 1,),
+                ),
+              ),
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
                   return Card(
