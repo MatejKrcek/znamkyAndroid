@@ -10,20 +10,21 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  var btn1 = Colors.blue;
-  var btn2 = Colors.blue;
-  var btn3 = Colors.blue;
-  var btn4 = Colors.blue;
-  var btn5 = Colors.blue;
+  var btn1 = Colors.grey;
+  var btn2 = Colors.grey;
+  var btn3 = Colors.grey;
+  var btn4 = Colors.grey;
+  var btn5 = Colors.grey;
 
-  var btn1Z = Colors.blue;
-  var btn2Z = Colors.blue;
-  var btn3Z = Colors.blue;
-  var btn4Z = Colors.blue;
-  var btn5Z = Colors.blue;
+  var btn1Z = Colors.grey;
+  var btn2Z = Colors.grey;
+  var btn3Z = Colors.grey;
+  var btn4Z = Colors.grey;
+  var btn5Z = Colors.grey;
 
-  final cervena = Colors.red;
+  final seda = Colors.grey;
   final modra = Colors.blue;
+
   final borderColor = Colors.red;
   var borderDefaul = Colors.white;
   int ulozitZnamku;
@@ -35,51 +36,51 @@ class _NewTransactionState extends State<NewTransaction> {
       switch (idZnamka) {
         case 1:
           {
-            btn1 = cervena;
-            btn2 = modra;
-            btn3 = modra;
-            btn4 = modra;
-            btn5 = modra;
+            btn1 = modra;
+            btn2 = seda;
+            btn3 = seda;
+            btn4 = seda;
+            btn5 = seda;
             ulozitZnamku = 1;
           }
           break;
         case 2:
           {
-            btn1 = modra;
-            btn2 = cervena;
-            btn3 = modra;
-            btn4 = modra;
-            btn5 = modra;
+            btn1 = seda;
+            btn2 = modra;
+            btn3 = seda;
+            btn4 = seda;
+            btn5 = seda;
             ulozitZnamku = 2;
           }
           break;
         case 3:
           {
-            btn1 = modra;
-            btn2 = modra;
-            btn3 = cervena;
-            btn4 = modra;
-            btn5 = modra;
+            btn1 = seda;
+            btn2 = seda;
+            btn3 = modra;
+            btn4 = seda;
+            btn5 = seda;
             ulozitZnamku = 3;
           }
           break;
         case 4:
           {
-            btn1 = modra;
-            btn2 = modra;
-            btn3 = modra;
-            btn4 = cervena;
-            btn5 = modra;
+            btn1 = seda;
+            btn2 = seda;
+            btn3 = seda;
+            btn4 = modra;
+            btn5 = seda;
             ulozitZnamku = 4;
           }
           break;
         case 5:
           {
-            btn1 = modra;
-            btn2 = modra;
-            btn3 = modra;
-            btn4 = modra;
-            btn5 = cervena;
+            btn1 = seda;
+            btn2 = seda;
+            btn3 = seda;
+            btn4 = seda;
+            btn5 = modra;
             ulozitZnamku = 5;
           }
           break;
@@ -96,51 +97,51 @@ class _NewTransactionState extends State<NewTransaction> {
       switch (idVaha) {
         case 1:
           {
-            btn1Z = cervena;
-            btn2Z = modra;
-            btn3Z = modra;
-            btn4Z = modra;
-            btn5Z = modra;
+            btn1Z = modra;
+            btn2Z = seda;
+            btn3Z = seda;
+            btn4Z = seda;
+            btn5Z = seda;
             ulozitVahu = 1;
           }
           break;
         case 2:
           {
-            btn1Z = modra;
-            btn2Z = cervena;
-            btn3Z = modra;
-            btn4Z = modra;
-            btn5Z = modra;
+            btn1Z = seda;
+            btn2Z = modra;
+            btn3Z = seda;
+            btn4Z = seda;
+            btn5Z = seda;
             ulozitVahu = 2;
           }
           break;
         case 3:
           {
-            btn1Z = modra;
-            btn2Z = modra;
-            btn3Z = cervena;
-            btn4Z = modra;
-            btn5Z = modra;
+            btn1Z = seda;
+            btn2Z = seda;
+            btn3Z = modra;
+            btn4Z = seda;
+            btn5Z = seda;
             ulozitVahu = 3;
           }
           break;
         case 4:
           {
-            btn1Z = modra;
-            btn2Z = modra;
-            btn3Z = modra;
-            btn4Z = cervena;
-            btn5Z = modra;
+            btn1Z = seda;
+            btn2Z = seda;
+            btn3Z = seda;
+            btn4Z = modra;
+            btn5Z = seda;
             ulozitVahu = 4;
           }
           break;
         case 5:
           {
-            btn1Z = modra;
-            btn2Z = modra;
-            btn3Z = modra;
-            btn4Z = modra;
-            btn5Z = cervena;
+            btn1Z = seda;
+            btn2Z = seda;
+            btn3Z = seda;
+            btn4Z = seda;
+            btn5Z = modra;
             ulozitVahu = 5;
           }
           break;
@@ -158,7 +159,7 @@ class _NewTransactionState extends State<NewTransaction> {
 
     if (ulozitZnamku == null || ulozitVahu == null) {
       setState(() {
-        alert = 'Vyber si prosím všechny hodnoty';
+        alert = 'Vyber si prosím známku a váhu.';
         borderDefaul = borderColor;
       });
       return;
@@ -454,7 +455,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     margin: EdgeInsets.only(right: 20, top: 20),
                     child: RaisedButton(
                       child: Text(
-                        'Uložit',
+                        'Přidat',
                         style: TextStyle(
                           color: Colors.blue,
                           fontSize: 16,

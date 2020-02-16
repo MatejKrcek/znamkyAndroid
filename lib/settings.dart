@@ -10,7 +10,7 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Nastavení"),
+        title: const Text("O nás"),
       ),
       body: Container(
         margin: const EdgeInsets.all(20),

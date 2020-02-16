@@ -141,14 +141,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.settings),
+          icon: Icon(Icons.info_outline),
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Settings()),
             );
           },
-          tooltip: 'Nastavení',
+          tooltip: 'O nás',
         ),
         IconButton(
           icon: Icon(Icons.delete),
@@ -202,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
-                  'Place for your ad',
+                  'a place for your ad',
                   style: TextStyle(fontSize: 20, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
