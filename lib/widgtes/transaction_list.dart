@@ -36,6 +36,7 @@ class TransactionList extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(color: Colors.grey, width: 1,),
+                  bottom: BorderSide(color: Colors.grey, width: 1,)
                 ),
               ),
               child: ListView.builder(

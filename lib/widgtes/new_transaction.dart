@@ -9,7 +9,8 @@ class NewTransaction extends StatefulWidget {
   _NewTransactionState createState() => _NewTransactionState();
 }
 
-class _NewTransactionState extends State<NewTransaction> {
+class _NewTransactionState extends State<NewTransaction>
+    with SingleTickerProviderStateMixin {
   var btn1 = Colors.grey;
   var btn2 = Colors.grey;
   var btn3 = Colors.grey;
@@ -24,12 +25,31 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final seda = Colors.grey;
   final modra = Colors.blue;
-
   final borderColor = Colors.red;
   var borderDefaul = Colors.white;
+
   int ulozitZnamku;
   int ulozitVahu;
   String alert = '';
+
+//  AnimationController controller;
+//  Animation<Size> _heightAnimation;
+//
+//  @override
+//  void initState() {
+//    super.initState();
+//    controller = AnimationController(
+//      vsync: this,
+//      duration: Duration(
+//        milliseconds: 300,
+//      ),
+//    );
+//    _heightAnimation = Tween<Size>(
+//            begin: Size(double.infinity, 0), end: Size(double.infinity, MediaQuery.of(context).size.height * 0.5))
+//        .animate(
+//      CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn),
+//    );
+//  }
 
   void _submitZnamka(int idZnamka) {
     setState(() {
@@ -174,6 +194,7 @@ class _NewTransactionState extends State<NewTransaction> {
 
     ulozitZnamku = null;
     ulozitVahu = null;
+    //controller.reverse();
     Navigator.of(context).pop();
   }
 
@@ -196,14 +217,14 @@ class _NewTransactionState extends State<NewTransaction> {
                   Container(
                       margin: EdgeInsets.only(left: 10, bottom: 15),
                       child: RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           text: 'Vyber si ',
                           style: TextStyle(
                             fontSize: 17,
                             color: Colors.black,
                           ),
                           children: <TextSpan>[
-                            TextSpan(
+                            const TextSpan(
                                 text: 'známku',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -225,7 +246,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitZnamka(1),
-                      child: Text(
+                      child: const Text(
                         '1',
                         style: TextStyle(
                           color: Colors.white,
@@ -244,7 +265,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitZnamka(2),
-                      child: Text(
+                      child: const Text(
                         '2',
                         style: TextStyle(
                           color: Colors.white,
@@ -263,7 +284,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitZnamka(3),
-                      child: Text(
+                      child: const Text(
                         '3',
                         style: TextStyle(
                           color: Colors.white,
@@ -282,7 +303,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitZnamka(4),
-                      child: Text(
+                      child: const Text(
                         '4',
                         style: TextStyle(
                           color: Colors.white,
@@ -301,7 +322,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitZnamka(5),
-                      child: Text(
+                      child: const Text(
                         '5',
                         style: TextStyle(
                           color: Colors.white,
@@ -316,6 +337,12 @@ class _NewTransactionState extends State<NewTransaction> {
                   ),
                 ],
               ),
+//              Container(
+//                margin: const EdgeInsets.only(top: 15),
+//                child: Divider(
+//                  color: Colors.black,
+//                ),
+//              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -327,14 +354,14 @@ class _NewTransactionState extends State<NewTransaction> {
                         top: 30,
                       ),
                       child: RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           text: 'Vyber si ',
                           style: TextStyle(
                             fontSize: 17,
                             color: Colors.black,
                           ),
                           children: <TextSpan>[
-                            TextSpan(
+                            const TextSpan(
                                 text: 'váhu',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -351,12 +378,12 @@ class _NewTransactionState extends State<NewTransaction> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.all(2.5),
+                    margin: const EdgeInsets.all(2.5),
                     width: MediaQuery.of(context).size.width * 0.13,
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitVaha(1),
-                      child: Text(
+                      child: const Text(
                         '1',
                         style: TextStyle(
                           color: Colors.white,
@@ -370,12 +397,12 @@ class _NewTransactionState extends State<NewTransaction> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(2.5),
+                    margin: const EdgeInsets.all(2.5),
                     width: MediaQuery.of(context).size.width * 0.13,
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitVaha(2),
-                      child: Text(
+                      child: const Text(
                         '2',
                         style: TextStyle(
                           color: Colors.white,
@@ -389,12 +416,12 @@ class _NewTransactionState extends State<NewTransaction> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(2.5),
+                    margin: const EdgeInsets.all(2.5),
                     width: MediaQuery.of(context).size.width * 0.13,
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitVaha(3),
-                      child: Text(
+                      child: const Text(
                         '3',
                         style: TextStyle(
                           color: Colors.white,
@@ -408,12 +435,12 @@ class _NewTransactionState extends State<NewTransaction> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(2.5),
+                    margin: const EdgeInsets.all(2.5),
                     width: MediaQuery.of(context).size.width * 0.13,
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitVaha(4),
-                      child: Text(
+                      child: const Text(
                         '4',
                         style: TextStyle(
                           color: Colors.white,
@@ -427,12 +454,12 @@ class _NewTransactionState extends State<NewTransaction> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(2.5),
+                    margin: const EdgeInsets.all(2.5),
                     width: MediaQuery.of(context).size.width * 0.13,
                     alignment: Alignment.center,
                     child: RawMaterialButton(
                       onPressed: () => _submitVaha(5),
-                      child: Text(
+                      child: const Text(
                         '5',
                         style: TextStyle(
                           color: Colors.white,
@@ -452,9 +479,9 @@ class _NewTransactionState extends State<NewTransaction> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(right: 20, top: 20),
+                    margin: const EdgeInsets.only(right: 20, top: 20),
                     child: RaisedButton(
-                      child: Text(
+                      child: const Text(
                         'Přidat',
                         style: TextStyle(
                           color: Colors.blue,
@@ -478,10 +505,13 @@ class _NewTransactionState extends State<NewTransaction> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: 20),
-                    padding: EdgeInsets.all(10),
+                    margin: const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      border: Border.all(color: borderDefaul, width: 2,),
+                      border: Border.all(
+                        color: borderDefaul,
+                        width: 2,
+                      ),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(

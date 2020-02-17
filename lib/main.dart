@@ -141,16 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.info_outline),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Settings()),
-            );
-          },
-          tooltip: 'O nás',
-        ),
-        IconButton(
           icon: Icon(Icons.delete),
           color: Colors.redAccent,
           onPressed: () {
@@ -158,6 +148,16 @@ class _MyHomePageState extends State<MyHomePage> {
 //              Displaysnackbar();
           },
           tooltip: 'Odstranit poslední známku',
+        ),
+        IconButton(
+          icon: Icon(Icons.more_vert),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Settings()),
+            );
+          },
+          tooltip: 'O nás',
         ),
       ],
     );
@@ -191,22 +191,22 @@ class _MyHomePageState extends State<MyHomePage> {
                           MediaQuery.of(context).padding.top) *
                       0.75,
                   child: TransactionList(_userTransactions, removeMark)),
-              Container(
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.1,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  'a place for your ad',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+//              Container(
+//                height: (MediaQuery.of(context).size.height -
+//                        appBar.preferredSize.height -
+//                        MediaQuery.of(context).padding.top) *
+//                    0.1,
+//                decoration: BoxDecoration(
+//                  color: Colors.grey,
+//                  border: Border.all(color: Colors.grey),
+//                  borderRadius: BorderRadius.circular(6),
+//                ),
+//                child: Text(
+//                  'a place for your ad',
+//                  style: TextStyle(fontSize: 20, color: Colors.white),
+//                  textAlign: TextAlign.center,
+//                ),
+//              ),
             ],
           ),
         ),
