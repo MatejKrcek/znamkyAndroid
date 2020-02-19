@@ -36,7 +36,7 @@ class Settings extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: const Text(
-                    'Verze: 1.0.0+4',
+                    'Verze: 1.0.0+6',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -51,7 +51,7 @@ class Settings extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: const Text(
-                    'Poslední update: 16. 2. 2019',
+                    'Poslední update: 17. 2. 2019',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,

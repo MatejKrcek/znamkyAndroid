@@ -5,6 +5,9 @@ import './widgtes/transaction_list.dart';
 import './models/transaction.dart';
 import './settings.dart';
 
+import 'package:touchable_opacity/touchable_opacity.dart';
+import 'package:flutter/services.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -38,8 +41,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  // String titleInput;
-  // String amountInput;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -97,12 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _deleteTransaction(String id) {
-    setState(() {
-      _userTransactions.removeWhere((tx) => tx.id == id);
-    });
-//    print('smazano');
-  }
+//  void _deleteTransaction(String id) {
+//    setState(() {
+//      _userTransactions.removeWhere((tx) => tx.id == id);
+//    });
+////    print('smazano');
+//  }
 
   void removeMark() {
     double citatel = 0;
@@ -130,7 +131,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void execute() {
-    removeMark();
+    setState(() {
+      _userTransactions.clear();
+      markList.removeAt(0);
+      weightList.removeAt(0);
+      position.removeAt(0);
+    });
+    HapticFeedback.vibrate();
+    prumer = 0;
+    print('dlouho');
   }
 
   @override
@@ -140,14 +149,16 @@ class _MyHomePageState extends State<MyHomePage> {
         'Počítadlo známek',
       ),
       actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.delete),
-          color: Colors.redAccent,
-          onPressed: () {
-            execute();
-//              Displaysnackbar();
-          },
-          tooltip: 'Odstranit poslední známku',
+        TouchableOpacity(
+          activeOpacity: 0.4,
+          child: GestureDetector(
+            onTap: removeMark,
+            onLongPress: execute,
+            child: Icon(
+              Icons.delete,
+              color: Colors.redAccent,
+            ),
+          ),
         ),
         IconButton(
           icon: Icon(Icons.more_vert),
@@ -171,8 +182,8 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 height: (MediaQuery.of(context).size.height -
-                    appBar.preferredSize.height -
-                    MediaQuery.of(context).padding.top) *
+                        appBar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
                     0.15,
                 margin: EdgeInsets.only(bottom: 0),
                 child: Center(
@@ -191,6 +202,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           MediaQuery.of(context).padding.top) *
                       0.75,
                   child: TransactionList(_userTransactions, removeMark)),
+//              Listener(
+//                onPointerDown: (details) {
+//                  _buttonPressed = true;
+//                  _increaseCounterWhilePressed();
+//                },
+//                onPointerUp: (details) {
+//                  _buttonPressed = false;
+//                },
+//              ),
 //              Container(
 //                height: (MediaQuery.of(context).size.height -
 //                        appBar.preferredSize.height -
