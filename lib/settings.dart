@@ -36,7 +36,7 @@ class Settings extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: const Text(
-                    'Verze: 1.0.0+6',
+                    'Verze: 1.0.0+9',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,

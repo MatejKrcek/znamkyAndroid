@@ -35,9 +35,14 @@ class TransactionList extends StatelessWidget {
           : Container(
               decoration: BoxDecoration(
                 border: Border(
-                  top: BorderSide(color: Colors.grey, width: 1,),
-                  bottom: BorderSide(color: Colors.grey, width: 1,)
-                ),
+                    top: BorderSide(
+                      color: Colors.grey,
+                      width: 1,
+                    ),
+                    bottom: BorderSide(
+                      color: Colors.grey,
+                      width: 1,
+                    )),
               ),
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
@@ -54,7 +59,7 @@ class TransactionList extends StatelessWidget {
                           Row(
                             children: <Widget>[
                               Container(
-                                  margin:
+                                margin:
                                     const EdgeInsets.only(left: 13, bottom: 5),
                                 child: CircleAvatar(
                                   backgroundColor: Colors.blue,
@@ -80,14 +85,19 @@ class TransactionList extends StatelessWidget {
                                   ),
                                 ),
                               ),
-//                              IconButton(
-//                                icon: Icon(Icons.delete),
-//                                color: Colors.redAccent,
-//                                onPressed: () => removeMark(),
-//                                tooltip: 'Odstranit poslední známku',
-//                              ),
+                              Container(
+                                margin: const EdgeInsets.only(left: 220),
+                                alignment: Alignment.topRight,
+                                child: IconButton(
+                                  icon: Icon(Icons.delete),
+                                  color: Colors.redAccent,
+                                  onPressed: () => removeMark(),
+                                  tooltip: 'Odstranit poslední známku',
+                                ),
+                              ),
                             ],
                           ),
+
                           Row(
                             children: <Widget>[
                               Container(

@@ -51,7 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
   List<int> markList = [0];
   List<int> weightList = [0];
   List<int> position = [];
+  List<int> cLocation = [];
 
+  int selectedLocation;
+  int id;
   double prumer = 0;
 
   void _addNewTransaction(int txMark, int txWeight) {
@@ -140,6 +143,12 @@ class _MyHomePageState extends State<MyHomePage> {
     HapticFeedback.vibrate();
     prumer = 0;
     print('dlouho');
+  }
+
+  void calculate(id) {
+    selectedLocation = id;
+
+    //kdyz ID je v poli, pamatuj jeho pozici a smaz na stejne pozici id, znamku a vahu. Pote znovu vypocitej prumer.
   }
 
   @override
