@@ -56,72 +56,93 @@ class TransactionList extends StatelessWidget {
                       padding: EdgeInsets.all(6),
                       child: Column(
                         children: <Widget>[
-                          Column(),
-                          Column(),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Container(
-                                margin:
-                                    const EdgeInsets.only(left: 13, bottom: 5),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.blue,
-                                  child: Text(
-                                    transactions[index].weight.toString(),
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 21,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                              Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                            left: 13, bottom: 5),
+                                        child: CircleAvatar(
+                                          backgroundColor: Colors.blue,
+                                          child: Text(
+                                            transactions[index]
+                                                .weight
+                                                .toString(),
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 21,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                            left: 35, bottom: 5),
+                                        child: Text(
+                                          transactions[index].mark.toString(),
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 21,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin:
-                                    const EdgeInsets.only(left: 35, bottom: 5),
-                                child: Text(
-                                  transactions[index].mark.toString(),
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.bold,
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        margin: EdgeInsets.only(left: 10),
+                                        child: const Text(
+                                          'Známka',
+                                          style: TextStyle(
+                                            color: Colors.black87,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(left: 20),
+                                        child: const Text(
+                                          'Váha',
+                                          style: TextStyle(
+                                            color: Colors.black87,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
+                                ],
                               ),
-                              Container(
-                                margin: const EdgeInsets.only(left: 40),
-                                alignment: Alignment.topRight,
-                                child: IconButton(
-                                  icon: Icon(Icons.delete),
-                                  color: Colors.redAccent,
-                                  onPressed: () {
-                                    removeMark(index);
-                                    },
-                                  tooltip: 'Odstranit poslední známku',
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.only(left: 10),
-                                child: const Text(
-                                  'Známka',
-                                  style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 13,
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        margin: const EdgeInsets.only(left: 40),
+                                        alignment: Alignment.topRight,
+                                        child: IconButton(
+                                          icon: Icon(Icons.delete),
+                                          color: Colors.redAccent,
+                                          onPressed: () {
+                                            removeMark(index);
+                                          },
+                                          tooltip: 'Odstranit poslední známku',
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(left: 20),
-                                child: const Text(
-                                  'Váha',
-                                  style: TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 13,
-                                  ),
-                                ),
+                                ],
                               ),
                             ],
                           ),
