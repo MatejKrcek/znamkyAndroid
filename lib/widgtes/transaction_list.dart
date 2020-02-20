@@ -56,6 +56,8 @@ class TransactionList extends StatelessWidget {
                       padding: EdgeInsets.all(6),
                       child: Column(
                         children: <Widget>[
+                          Column(),
+                          Column(),
                           Row(
                             children: <Widget>[
                               Container(
@@ -86,18 +88,19 @@ class TransactionList extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(left: 220),
+                                margin: const EdgeInsets.only(left: 40),
                                 alignment: Alignment.topRight,
                                 child: IconButton(
                                   icon: Icon(Icons.delete),
                                   color: Colors.redAccent,
-                                  onPressed: () => removeMark(),
+                                  onPressed: () {
+                                    removeMark(index);
+                                    },
                                   tooltip: 'Odstranit poslední známku',
                                 ),
                               ),
                             ],
                           ),
-
                           Row(
                             children: <Widget>[
                               Container(

@@ -30,6 +30,7 @@ class _NewTransactionState extends State<NewTransaction>
 
   int ulozitZnamku;
   int ulozitVahu;
+  int ulozitId = new DateTime.now().second;
   String alert = '';
 
 //  AnimationController controller;
@@ -189,7 +190,9 @@ class _NewTransactionState extends State<NewTransaction>
       widget.addTx(
         ulozitVahu,
         ulozitZnamku,
+        ulozitId,
       );
+
     }
 
     ulozitZnamku = null;

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class Transaction {
-  final String id;
+  final int id;
   final int mark;
   final int weight;
 

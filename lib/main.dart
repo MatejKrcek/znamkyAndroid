@@ -45,38 +45,39 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+String prijatyBtn;
+String idZ;
+List<int> markList = [0];
+List<int> weightList = [0];
+
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [];
 
-  List<int> markList = [0];
-  List<int> weightList = [0];
   List<int> position = [];
-  List<int> cLocation = [];
+  List<String> idList = [];
 
-  int selectedLocation;
-  int id;
   double prumer = 0;
 
-  void _addNewTransaction(int txMark, int txWeight) {
+  void _addNewTransaction(int txMark, int txWeight, int txId) {
     final newTx = Transaction(
       mark: txMark,
       weight: txWeight,
-      id: DateTime.now().toString(),
+      id: txId,
     );
 
     double citatel = 0;
     double jmenovatel = 0;
 
+    //idZ = new DateTime.now().second.toString();
+
     setState(() {
-//      position.forEach((element) {
-//        if (position.contains(element) ) {
-//
-//        }
-//      });
       _userTransactions.insert(0, newTx);
       markList.insert(0, txWeight);
       weightList.insert(0, txMark);
+      //idList.insert(0, idZ);
     });
+
+    //print('zapis id: $idList');
 
     for (int i = 0; i < markList.length; i++) {
       citatel = citatel + (markList[i].toDouble() * weightList[i].toDouble());
@@ -101,54 +102,42 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-//  void _deleteTransaction(String id) {
-//    setState(() {
-//      _userTransactions.removeWhere((tx) => tx.id == id);
-//    });
-////    print('smazano');
-//  }
-
-  void removeMark() {
+  void removeMark(i) {
     double citatel = 0;
     double jmenovatel = 0;
 
     setState(() {
-      _userTransactions.removeAt(0);
-//      _userTransactions.removeWhere((tx) => tx.id == id);
-      markList.removeAt(0);
-      weightList.removeAt(0);
-      position.removeAt(0);
-    });
+      _userTransactions.removeAt(i);
+      markList.removeAt(i);
+      weightList.removeAt(i);
 
-//    print('znamky: $markList');
-//    print('pozice: $position');
+    });
 
     for (int i = 0; i < markList.length; i++) {
       citatel = citatel + (markList[i].toDouble() * weightList[i].toDouble());
       jmenovatel = jmenovatel + weightList[i].toDouble();
     }
-//    position.add(markList.length); //pokud neni zadna znamka, delka je 1
-//    position.removeAt(0); //pokud neni zadna znamka, delka je 1
 
     prumer = citatel / jmenovatel; //pokud je 1 znamka, delka je 2
+
+    print(prumer);
+
+    if (prumer.isNaN) {
+      prumer = 0;
+    }
   }
 
   void execute() {
     setState(() {
       _userTransactions.clear();
-      markList.removeAt(0);
-      weightList.removeAt(0);
-      position.removeAt(0);
+      markList.clear();
+      weightList.clear();
+      position.clear();
+      idList.clear();
     });
     HapticFeedback.vibrate();
     prumer = 0;
     print('dlouho');
-  }
-
-  void calculate(id) {
-    selectedLocation = id;
-
-    //kdyz ID je v poli, pamatuj jeho pozici a smaz na stejne pozici id, znamku a vahu. Pote znovu vypocitej prumer.
   }
 
   @override
@@ -161,8 +150,8 @@ class _MyHomePageState extends State<MyHomePage> {
         TouchableOpacity(
           activeOpacity: 0.4,
           child: GestureDetector(
-            onTap: removeMark,
-            onLongPress: execute,
+            onTap: execute,
+            //onLongPress: execute,
             child: Icon(
               Icons.delete,
               color: Colors.redAccent,
