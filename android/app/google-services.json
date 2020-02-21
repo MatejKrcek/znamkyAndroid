@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "580911079925",
+    "firebase_url": "https://pocitadloznamek.firebaseio.com",
+    "project_id": "pocitadloznamek",
+    "storage_bucket": "pocitadloznamek.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580911079925:android:80406ed5e194a576cc40bc",
+        "android_client_info": {
+          "package_name": "com.voicebotacademy.pocitadlo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580911079925-rt29jqjjpk0h9ar8spp3ehpgu2fr6f1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-QMOS92S3ELgAcHNJiC_xcNiFHt7ea_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580911079925-rt29jqjjpk0h9ar8spp3ehpgu2fr6f1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

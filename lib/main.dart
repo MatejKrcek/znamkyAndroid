@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import './widgtes/new_transaction.dart';
 import './widgtes/transaction_list.dart';
@@ -7,12 +8,29 @@ import './settings.dart';
 
 import 'package:touchable_opacity/touchable_opacity.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_admob/firebase_admob.dart';
+import 'package:admob_flutter/admob_flutter.dart';
+
 
 void main() => runApp(MyApp());
 
+//void main() {
+//  //WidgetsFlutterBinding.ensureInitialized();
+//  Admob.initialize(getAppId());
+//  runApp(MyApp());
+//}
+
+
 class MyApp extends StatelessWidget {
+  MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Počítadlo známek',
@@ -91,6 +109,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
+
+
       context: ctx,
       builder: (_) {
         return GestureDetector(
@@ -106,6 +126,8 @@ class _MyHomePageState extends State<MyHomePage> {
     double citatel = 0;
     double jmenovatel = 0;
 
+    print('a');
+
     setState(() {
       _userTransactions.removeAt(i);
       markList.removeAt(i);
@@ -120,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     prumer = citatel / jmenovatel; //pokud je 1 znamka, delka je 2
 
-    print(prumer);
+    //print(prumer);
 
     if (prumer.isNaN) {
       prumer = 0;
