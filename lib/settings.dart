@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:test_app/tutorial.dart';
+
+import 'tutorial.dart';
+
 
 class Settings extends StatelessWidget {
   void feedback() {
@@ -36,7 +40,7 @@ class Settings extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: const Text(
-                    'Verze: 1.0.0+9',
+                    'Verze: 1.0.1+11',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
@@ -51,7 +55,7 @@ class Settings extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: const Text(
-                    'Poslední update: 19. 2. 2019',
+                    'Poslední update: 20. 2. 2019',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,

@@ -200,31 +200,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           MediaQuery.of(context).padding.top) *
                       0.75,
                   child: TransactionList(_userTransactions, removeMark)),
-//              Listener(
-//                onPointerDown: (details) {
-//                  _buttonPressed = true;
-//                  _increaseCounterWhilePressed();
-//                },
-//                onPointerUp: (details) {
-//                  _buttonPressed = false;
-//                },
-//              ),
-//              Container(
-//                height: (MediaQuery.of(context).size.height -
-//                        appBar.preferredSize.height -
-//                        MediaQuery.of(context).padding.top) *
-//                    0.1,
-//                decoration: BoxDecoration(
-//                  color: Colors.grey,
-//                  border: Border.all(color: Colors.grey),
-//                  borderRadius: BorderRadius.circular(6),
-//                ),
-//                child: Text(
-//                  'a place for your ad',
-//                  style: TextStyle(fontSize: 20, color: Colors.white),
-//                  textAlign: TextAlign.center,
-//                ),
-//              ),
             ],
           ),
         ),
@@ -234,6 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
         tooltip: 'Přidat novou známku',
+        backgroundColor: Colors.blue,
       ),
     );
   }

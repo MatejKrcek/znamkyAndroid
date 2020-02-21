@@ -35,14 +35,15 @@ class TransactionList extends StatelessWidget {
           : Container(
               decoration: BoxDecoration(
                 border: Border(
-                    top: BorderSide(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                    bottom: BorderSide(
-                      color: Colors.grey,
-                      width: 1,
-                    )),
+                  top: BorderSide(
+                    color: Colors.grey,
+                    width: 1,
+                  ),
+//                    bottom: BorderSide(
+//                      color: Colors.grey,
+//                      width: 1,
+//                    ),
+                ),
               ),
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
@@ -137,7 +138,7 @@ class TransactionList extends StatelessWidget {
                                           onPressed: () {
                                             removeMark(index);
                                           },
-                                          tooltip: 'Odstranit poslední známku',
+                                          tooltip: 'Odstranit tuto známku',
                                         ),
                                       ),
                                     ],

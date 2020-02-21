@@ -33,25 +33,6 @@ class _NewTransactionState extends State<NewTransaction>
   int ulozitId = new DateTime.now().second;
   String alert = '';
 
-//  AnimationController controller;
-//  Animation<Size> _heightAnimation;
-//
-//  @override
-//  void initState() {
-//    super.initState();
-//    controller = AnimationController(
-//      vsync: this,
-//      duration: Duration(
-//        milliseconds: 300,
-//      ),
-//    );
-//    _heightAnimation = Tween<Size>(
-//            begin: Size(double.infinity, 0), end: Size(double.infinity, MediaQuery.of(context).size.height * 0.5))
-//        .animate(
-//      CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn),
-//    );
-//  }
-
   void _submitZnamka(int idZnamka) {
     setState(() {
       switch (idZnamka) {
@@ -175,9 +156,6 @@ class _NewTransactionState extends State<NewTransaction>
   }
 
   void _save() {
-//    print('hodnota prijata znamka: $ulozitZnamku');
-//    print('hodnota prijata vaha: $ulozitVahu');
-
     if (ulozitZnamku == null || ulozitVahu == null) {
       setState(() {
         alert = 'Vyber si prosím známku a váhu.';
