@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../models/transaction.dart';
+import '../models/mark.dart';
 
-class TransactionList extends StatelessWidget {
-  final List<Transaction> transactions;
+class MarkList extends StatelessWidget {
+  final List<Mark> transactions;
   final Function removeMark;
 
-  TransactionList(this.transactions, this.removeMark);
+  MarkList(this.transactions, this.removeMark);
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,24 @@ class TransactionList extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
+//                Container(
+//                  margin: const EdgeInsets.only(top: 20),
+//                  child: const FlatButton(
+//                    child: const Text(
+//                      'Přidat známku',
+//                      style: TextStyle(),
+//                    ),
+//                  ),
+//                ),
                 Container(
-                    height: 200,
-                    child: Image.asset(
-                      'assets/images/waiting.png',
-                      fit: BoxFit.cover,
-                    )),
+                  height: 200,
+                  child: Image.asset(
+                    'assets/images/waiting.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ],
             )
           : Container(
@@ -47,7 +57,6 @@ class TransactionList extends StatelessWidget {
               ),
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
-
                   final item = transactions[index].id.toString();
                   return Dismissible(
                     key: Key(item),
@@ -155,31 +164,31 @@ class TransactionList extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-//                                Column(
-//                                  mainAxisAlignment: MainAxisAlignment.end,
-//                                  children: <Widget>[
-//                                    Row(
-//                                      mainAxisAlignment: MainAxisAlignment.end,
-//                                      crossAxisAlignment:
-//                                          CrossAxisAlignment.center,
-//                                      children: <Widget>[
-//                                        Container(
-//                                          margin:
-//                                              const EdgeInsets.only(left: 40),
-//                                          alignment: Alignment.topRight,
-//                                          child: IconButton(
-//                                            icon: Icon(Icons.delete),
-//                                            color: Colors.redAccent,
-//                                            onPressed: () {
-//                                              removeMark(index);
-//                                            },
-//                                            tooltip: 'Odstranit tuto známku',
-//                                          ),
-//                                        ),
-//                                      ],
-//                                    ),
-//                                  ],
-//                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(left: 40),
+                                          alignment: Alignment.topRight,
+                                          child: IconButton(
+                                            icon: Icon(Icons.delete),
+                                            color: Colors.redAccent,
+                                            onPressed: () {
+                                              removeMark(index);
+                                            },
+                                            tooltip: 'Odstranit tuto známku',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ],

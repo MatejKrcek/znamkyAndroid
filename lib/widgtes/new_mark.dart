@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatefulWidget {
+class NewMark extends StatefulWidget {
   final Function addTx;
 
-  NewTransaction(this.addTx);
+  NewMark(this.addTx);
 
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewMarkState createState() => _NewMarkState();
 }
 
-class _NewTransactionState extends State<NewTransaction>
-    with SingleTickerProviderStateMixin {
+class _NewMarkState extends State<NewMark> with SingleTickerProviderStateMixin {
   var btn1 = Colors.grey;
   var btn2 = Colors.grey;
   var btn3 = Colors.grey;
@@ -170,7 +169,6 @@ class _NewTransactionState extends State<NewTransaction>
         ulozitZnamku,
         ulozitId,
       );
-
     }
 
     ulozitZnamku = null;

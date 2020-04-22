@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 
-class Transaction {
+class Mark {
   final int id;
   final int mark;
   final int weight;
 
-  Transaction({
+  Mark({
     @required this.id,
     @required this.mark,
     @required this.weight,

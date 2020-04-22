@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import './widgtes/new_transaction.dart';
-import './widgtes/transaction_list.dart';
-import './models/transaction.dart';
+import './widgtes/new_mark.dart';
+import './widgtes/mark_list.dart';
+import './models/mark.dart';
 import './settings.dart';
 
 import 'package:touchable_opacity/touchable_opacity.dart';
-import 'package:flutter/services.dart';
-import 'package:firebase_admob/firebase_admob.dart';
-import 'package:admob_flutter/admob_flutter.dart';
+// import 'package:firebase_admob/firebase_admob.dart';
+// import 'package:admob_flutter/admob_flutter.dart';
 
 
 void main() => runApp(MyApp());
-
-//void main() {
-//  //WidgetsFlutterBinding.ensureInitialized();
-//  Admob.initialize(getAppId());
-//  runApp(MyApp());
-//}
-
 
 class MyApp extends StatelessWidget {
   MyApp({Key key}) : super(key: key);
@@ -69,7 +61,7 @@ List<int> markList = [0];
 List<int> weightList = [0];
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransactions = [];
+  final List<Mark> _userTransactions = [];
 
   List<int> position = [];
   List<String> idList = [];
@@ -77,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double prumer = 0;
 
   void _addNewTransaction(int txMark, int txWeight, int txId) {
-    final newTx = Transaction(
+    final newTx = Mark(
       mark: txMark,
       weight: txWeight,
       id: txId,
@@ -109,13 +101,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
-
-
       context: ctx,
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: NewTransaction(_addNewTransaction),
+          child: NewMark(_addNewTransaction),
           behavior: HitTestBehavior.opaque,
         );
       },
@@ -221,7 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           appBar.preferredSize.height -
                           MediaQuery.of(context).padding.top) *
                       0.75,
-                  child: TransactionList(_userTransactions, removeMark)),
+                  child: MarkList(_userTransactions, removeMark)),
             ],
           ),
         ),
