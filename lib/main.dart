@@ -61,14 +61,14 @@ List<int> markList = [0];
 List<int> weightList = [0];
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Mark> _userTransactions = [];
+  final List<Mark> _userMarks = [];
 
   List<int> position = [];
   List<String> idList = [];
 
   double prumer = 0;
 
-  void _addNewTransaction(int txMark, int txWeight, int txId) {
+  void _addNewMark(int txMark, int txWeight, int txId) {
     final newTx = Mark(
       mark: txMark,
       weight: txWeight,
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //idZ = new DateTime.now().second.toString();
 
     setState(() {
-      _userTransactions.insert(0, newTx);
+      _userMarks.insert(0, newTx);
       markList.insert(0, txWeight);
       weightList.insert(0, txMark);
       //idList.insert(0, idZ);
@@ -99,13 +99,13 @@ class _MyHomePageState extends State<MyHomePage> {
 //    print('pozice: $position');
   }
 
-  void _startAddNewTransaction(BuildContext ctx) {
+  void _startAddNewMark(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: NewMark(_addNewTransaction),
+          child: NewMark(_addNewMark),
           behavior: HitTestBehavior.opaque,
         );
       },
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print('a');
 
     setState(() {
-      _userTransactions.removeAt(i);
+      _userMarks.removeAt(i);
       markList.removeAt(i);
       weightList.removeAt(i);
 
@@ -141,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void execute() {
     setState(() {
-      _userTransactions.clear();
+      _userMarks.clear();
       markList.clear();
       weightList.clear();
       position.clear();
@@ -211,7 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           appBar.preferredSize.height -
                           MediaQuery.of(context).padding.top) *
                       0.75,
-                  child: MarkList(_userTransactions, removeMark)),
+                  child: MarkList(_userMarks, removeMark)),
             ],
           ),
         ),
@@ -219,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () => _startAddNewTransaction(context),
+        onPressed: () => _startAddNewMark(context),
         tooltip: 'Přidat novou známku',
         backgroundColor: Colors.blue,
       ),
